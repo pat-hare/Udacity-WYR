@@ -4,7 +4,7 @@ import Question from './Question'
 
 class Home extends Component {
   state = {
-    toggleUnanswered: true
+    toggleUnanswered: true,
   }
   toggleAnswered = () => {
     this.setState(() => ({
@@ -18,26 +18,29 @@ class Home extends Component {
   }
 
   render() {
+    const { unansweredQuestions, answeredQuestions } = this.props
+    const { toggleUnanswered } = this.state
+
     console.log(this.props, this.state)
     return (
       <div>
         <h3>Would You Rather - {this.props.setUser}</h3>
         <span>
-          <button>
+          <button
+            onClick={this.toggleUnanswered}>
             Unanswered
           </button>
         </span>
         <span>
-          <button>
+          <button
+            onClick={this.toggleAnswered}>
             Answered
           </button>
         </span>
         <ul>
-          {this.props.questions.map((id) => (
-            <li key={id}>
-              <Question id={id}/>
-            </li>
-          ))}
+          {toggleUnanswered
+            ? <Question id={unansweredQuestions} />
+            : <Question id={answeredQuestions} />}
         </ul>
       </div>
     );
