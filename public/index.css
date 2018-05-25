@@ -1,0 +1,36 @@
+img {
+  height: 50px;
+  width: auto;
+}
+
+h1,
+h2 {
+  font-family: sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.loginBox {
+  display: flex;
+  max-width: 500px;
+}
+
+.username {
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+.loginButton {
+  height: 20px;
+  width: 50px;
+  margin-top: 20px;
+  margin-left: 10px;
+  font-family: sans-serif;
+}
+
+.loginButton:hover {
+  background-color: skyblue;
+  cursor: pointer;
+}
