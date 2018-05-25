@@ -7,7 +7,17 @@ class Home extends Component {
     console.log(this.props)
     return (
       <div>
-        <h3>Would You Rather</h3>
+        <h3>Would You Rather - {this.props.setUser}</h3>
+        <span>
+          <button>
+            Unanswered
+          </button>
+        </span>
+        <span>
+          <button>
+            Answered
+          </button>
+        </span>
         <ul>
           {this.props.questions.map((id) => (
             <li key={id}>

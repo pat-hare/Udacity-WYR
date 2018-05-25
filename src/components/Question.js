@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class Question extends Component {
   render() {
@@ -8,7 +9,9 @@ class Question extends Component {
     console.log(this.props)
     return (
       <div>
-        {optionOne.text} OR {optionTwo.text} by {author}
+        <Link to={`questions/${question.id}`}>
+          {optionOne.text} OR {optionTwo.text} by {author}
+        </Link>
       </div>
     )
   }
