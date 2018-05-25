@@ -3,8 +3,22 @@ import { connect } from 'react-redux'
 import Question from './Question'
 
 class Home extends Component {
+  state = {
+    toggleUnanswered: true
+  }
+  toggleAnswered = () => {
+    this.setState(() => ({
+      toggleUnanswered: false
+    }))
+  }
+  toggleUnanswered = () => {
+    this.setState(() => ({
+      toggleUnanswered: true
+    }))
+  }
+
   render() {
-    console.log(this.props)
+    console.log(this.props, this.state)
     return (
       <div>
         <h3>Would You Rather - {this.props.setUser}</h3>
@@ -30,10 +44,18 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps ({ questions, setUser }) {
+function mapStateToProps ({ questions, users, setUser }) {
+  const allQuestions = Object.keys(questions)
+    .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+  const answeredQuestionsIds = Object.keys(users[setUser].answers)
+    .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+  const unansweredQuestionsIds = allQuestions.filter(val => !answeredQuestionsIds.includes(val))
+    .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+
   return {
-    questions: Object.keys(questions)
-      .sort((a,b) => questions[b].timestamp - questions[a].timestamp),
+    questions: Object.keys(questions),
+    answeredQuestions: answeredQuestionsIds,
+    unansweredQuestions: unansweredQuestionsIds,
     setUser: setUser
   }
 }
