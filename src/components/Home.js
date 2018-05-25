@@ -20,7 +20,6 @@ class Home extends Component {
   render() {
     const { unansweredQuestions, answeredQuestions } = this.props
     const { toggleUnanswered } = this.state
-
     console.log(this.props, this.state)
     return (
       <div>
@@ -39,8 +38,15 @@ class Home extends Component {
         </span>
         <ul>
           {toggleUnanswered
-            ? <Question id={unansweredQuestions} />
-            : <Question id={answeredQuestions} />}
+            ? unansweredQuestions.map((id) => (
+                <li key={id}>
+                  <Question id={id} />
+                </li>))
+            : answeredQuestions.map((id) => (
+                <li key={id}>
+                  <Question id={id} />
+                </li>))
+            }
         </ul>
       </div>
     );
