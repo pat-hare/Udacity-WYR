@@ -20,13 +20,11 @@ class Login extends React.Component {
                 <div>
                   <h2 className='username'>{user.name}</h2>
                 </div>
-                <a href='/home'>
-                  <button
-                    className='loginButton'
-                    onClick={() => this.props.actions.setUser(user.id)}>
-                    Login
-                  </button>
-                </a>
+                <button
+                  className='loginButton'
+                  onClick={() => this.props.actions.setUser(user.id) && this.props.history.push('/home')}>
+                  Login
+                </button>
               </div>
             </li>
           ))}
