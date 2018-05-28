@@ -7,14 +7,20 @@ export default function questions (state = {}, action) {
         ...state,
         ...action.questions
       }
+      
     case SAVE_ANSWER :
+      const { answer, qid, setUser } = action
+      const question = state[qid]
+      const votes = answer + 'Votes'
+
       return {
         ...state,
-        [action.id]: {
-          ...state[action.id],
-          [action.answer + 'votes']: state[action.id][action.answer + 'votes'].concat([action.setUser])
+        [action.qid]: {
+          ...question,
+          [votes]: question[votes].concat([setUser])
         }
       }
+
     default :
       return state
   }

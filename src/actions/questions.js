@@ -10,7 +10,7 @@ export function receiveQuestions (questions) {
   }
 }
 
-function answerQuestion ({ setUser, qid, answer }) {
+function answerQuestion ({ qid, setUser, answer }) {
   return {
     type: SAVE_ANSWER,
     qid,
