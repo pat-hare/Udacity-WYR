@@ -7,17 +7,16 @@ export default function questions (state = {}, action) {
         ...state,
         ...action.questions
       }
-      
-    case SAVE_ANSWER :
-      const { answer, qid, setUser } = action
-      const question = state[qid]
-      const votes = answer + 'Votes'
 
+    case SAVE_ANSWER :
+      const { answer, qid, authedUser } = action
+      const question = state[qid]
+      console.log('---------------------', question[answer].text)
       return {
         ...state,
-        [action.qid]: {
+        [qid]: {
           ...question,
-          [votes]: question[votes].concat([setUser])
+          [answer]: {votes: question[answer].votes.concat([authedUser]), text: question[answer].text}
         }
       }
 

@@ -17,7 +17,7 @@ class AnswerQuestion extends Component {
         </div>
         <button
           className='loginButton'
-          onClick={() => this.props.actions.handleAnswerQuestion({setUser, answer: optionOneStr, qid: questionID}) && this.props.history.push('/home')}>
+          onClick={() => this.props.actions.handleAnswerQuestion({authedUser: setUser, answer: optionOneStr, qid: questionID}) && this.props.history.push('/home')}>
           X
         </button>
         <span>
@@ -28,7 +28,7 @@ class AnswerQuestion extends Component {
         </div>
         <button
           className='loginButton'
-          onClick={() => this.props.actions.handleAnswerQuestion({setUser, answer: optionTwoStr, qid: questionID}) && this.props.history.push('/home')}>
+          onClick={() => this.props.actions.handleAnswerQuestion({authedUser: setUser, answer: optionTwoStr, qid: questionID}) && this.props.history.push('/home')}>
           X
         </button>
       </div>
