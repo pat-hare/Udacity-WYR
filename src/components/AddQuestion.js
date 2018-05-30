@@ -27,6 +27,7 @@ class AddQuestion extends Component {
     const { optionOne, optionTwo } = this.state
     console.log('New Q: ', optionOne, 'OR', optionTwo)
     this.props.dispatch(handleAddQuestion(this.state))
+    this.props.history.push('/home')
     this.setState(() => ({
       optionOne: '',
       optionTwo: ''
