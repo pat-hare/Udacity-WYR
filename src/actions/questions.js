@@ -19,6 +19,7 @@ function addQuestion (question) {
 }
 
 export function handleAddQuestion (info) {
+  console.log('+++++++++++++', info)
   return(dispatch, getState) => {
     return saveQuestion({
       ...info,

@@ -1,32 +1,35 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
+import { generateUID } from '../utils/api'
 
 class AddQuestion extends Component {
   state = {
-    optionOneText: '',
-    optionTwoText: ''
+    optionOne: '',
+    optionTwo: '',
+    author: this.props.setUser,
+    id: generateUID()
   }
   handleChangeOne = (e) => {
-    const optionOneText = e.target.value
+    const optionOne = e.target.value
     this.setState(() => ({
-      optionOneText: optionOneText
+      optionOne: optionOne
     }))
   }
   handleChangeTwo = (e) => {
-    const optionTwoText = e.target.value
+    const optionTwo = e.target.value
     this.setState(() => ({
-      optionTwoText: optionTwoText
+      optionTwo: optionTwo
     }))
   }
   handleSubmit = (e) => {
     e.preventDefault()
-    const { optionOneText, optionTwoText } = this.state
-    console.log('New Q: ', optionOneText, 'OR', optionTwoText)
+    const { optionOne, optionTwo } = this.state
+    console.log('New Q: ', optionOne, 'OR', optionTwo)
     this.props.dispatch(handleAddQuestion(this.state))
     this.setState(() => ({
-      optionOneText: '',
-      optionTwoText: ''
+      optionOne: '',
+      optionTwo: ''
     }))
   }
   render() {
@@ -36,18 +39,18 @@ class AddQuestion extends Component {
         <form onSubmit={this.handleSubmit}>
           <textarea
             placeholder='Option One'
-            value={this.state.optionOneText}
+            value={this.state.optionOne}
             onChange={this.handleChangeOne}
           />
           <textarea
             placeholder='Option Two'
-            value={this.state.optionTwoText}
+            value={this.state.optionTwo}
             onChange={this.handleChangeTwo}
           />
 
           <button
             type='submit'
-            disabled={this.state.optionOneText === '' || this.state.optionTwoText === ''}>
+            disabled={this.state.optionOne === '' || this.state.optionTwo === ''}>
             Submit
           </button>
         </form>
@@ -56,4 +59,10 @@ class AddQuestion extends Component {
   }
 }
 
-export default connect()(AddQuestion)
+function mapStateToProps ({ setUser }) {
+  return {
+    setUser,
+  }
+}
+
+export default connect(mapStateToProps)(AddQuestion)

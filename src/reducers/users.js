@@ -27,11 +27,13 @@ export default function users (state = {}, action) {
       }
 
     case ADD_QUESTION :
+      console.log('@@@@@@@@@@@@@@@@@@', state)
+      console.log(action.question)
       return {
         ...state,
         [action.question.author]: {
           ...state[action.question.author],
-          questions: state[action.question.author].questions.concat([action.poll.id])
+          questions: state[action.question.author].questions.concat([action.question.id])
         }
       }
     default :

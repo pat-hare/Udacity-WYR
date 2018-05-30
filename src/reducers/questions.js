@@ -2,7 +2,7 @@ import { RECEIVE_QUESTIONS, SAVE_ANSWER, ADD_QUESTION } from '../actions/questio
 
 export default function questions (state = {}, action) {
   switch(action.type) {
-    
+
     case RECEIVE_QUESTIONS :
       return {
         ...state,
@@ -21,9 +21,10 @@ export default function questions (state = {}, action) {
       }
 
     case ADD_QUESTION :
+    console.log('--------------------', action.question)
       return {
         ...state,
-        [action.question.id]: action.question,
+        [action.question.id]: {id: action.question.id, author: action.question.author, timestamp: Date.now(), optionOne: {votes: [], text: action.question.optionOne}, optionTwo: {votes: [], text: action.question.optionTwo}},
       }
 
     default :
