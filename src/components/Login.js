@@ -22,7 +22,7 @@ class Login extends React.Component {
                 </div>
                 <button
                   className='loginButton'
-                  onClick={() => this.props.actions.setUser(user.id) && this.props.history.push('/home')}>
+                  onClick={() => this.props.actions.setUser(user.id) && this.props.history.push('/add')}>
                   Login
                 </button>
               </div>
