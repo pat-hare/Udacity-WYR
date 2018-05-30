@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Home from './Home'
 import AnswerQuestion from './AnswerQuestion'
 import AddQuestion from './AddQuestion'
+import Leaderboard from './Leaderboard'
 
 class App extends Component {
   componentDidMount() {
@@ -21,6 +22,7 @@ class App extends Component {
                 <Route path='/home' component={Home} />
                 <Route path='/questions/:id' component={AnswerQuestion} />
                 <Route path='/add' component={AddQuestion} />
+                <Route path='/leaderboard' component={Leaderboard} />
               </Fragment>}
         </div>
       </Router>
