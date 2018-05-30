@@ -5,6 +5,7 @@ import Login from './Login'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Home from './Home'
 import AnswerQuestion from './AnswerQuestion'
+import AddQuestion from './AddQuestion'
 
 class App extends Component {
   componentDidMount() {
@@ -19,6 +20,7 @@ class App extends Component {
             : <Fragment>
                 <Route path='/home' component={Home} />
                 <Route path='/questions/:id' component={AnswerQuestion} />
+                <Route path='/add' component={AddQuestion} />
               </Fragment>}
         </div>
       </Router>
