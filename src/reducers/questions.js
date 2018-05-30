@@ -21,7 +21,6 @@ export default function questions (state = {}, action) {
       }
 
     case ADD_QUESTION :
-    console.log('--------------------', action.question)
       return {
         ...state,
         [action.question.id]: {id: action.question.id, author: action.question.author, timestamp: Date.now(), optionOne: {votes: [], text: action.question.optionOne}, optionTwo: {votes: [], text: action.question.optionTwo}},

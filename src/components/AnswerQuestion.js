@@ -5,9 +5,8 @@ import { bindActionCreators } from 'redux'
 
 class AnswerQuestion extends Component {
   render() {
-    console.log('-----Props: ', this.props)
     const { questionID, setUser } = this.props
-    const { optionOne, optionTwo, author } = this.props.questions[questionID]
+    const { optionOne, optionTwo } = this.props.questions[questionID]
     const optionOneStr = 'optionOne'
     const optionTwoStr = 'optionTwo'
     return (

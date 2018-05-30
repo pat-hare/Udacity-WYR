@@ -14,10 +14,6 @@ export default function users (state = {}, action) {
       const { authedUser, qid , answer } = action
       const obj2 = state[authedUser].answers
       obj2[qid] = answer
-      console.log(obj2)
-      console.log('++++++++++++', state)
-      console.log(state[authedUser].answers)
-      console.log('id', action.qid, 'answer', action.answer)
       return {
         ...state,
         [authedUser]: {
@@ -27,8 +23,6 @@ export default function users (state = {}, action) {
       }
 
     case ADD_QUESTION :
-      console.log('@@@@@@@@@@@@@@@@@@', state)
-      console.log(action.question)
       return {
         ...state,
         [action.question.author]: {

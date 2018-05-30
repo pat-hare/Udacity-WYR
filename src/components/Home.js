@@ -20,7 +20,6 @@ class Home extends Component {
   render() {
     const { unansweredQuestions, answeredQuestions } = this.props
     const { toggleUnanswered } = this.state
-    console.log(this.props, this.state)
     return (
       <div>
         <h3>Would You Rather - {this.props.setUser}</h3>
@@ -54,9 +53,6 @@ class Home extends Component {
 }
 
 function mapStateToProps ({ questions, users, setUser }) {
-  console.log('@@@@@@@@@@@@', questions, users, setUser)
-  console.log(Object.keys(questions))
-  console.log(questions.timestamp)
   const allQuestions = Object.keys(questions)
     .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
   const answeredQuestionsIds = Object.keys(users[setUser].answers)

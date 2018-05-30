@@ -6,7 +6,6 @@ class Question extends Component {
   render() {
     const { question } = this.props
     const { optionOne, optionTwo, author } = question
-    console.log(this.props)
     return (
       <div>
         <Link to={`questions/${question.id}`}>
