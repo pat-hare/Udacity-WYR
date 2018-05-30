@@ -5,21 +5,20 @@ import { generateUID } from '../utils/api'
 
 class AddQuestion extends Component {
   state = {
-    optionOne: '',
-    optionTwo: '',
+    optionOneText: '',
+    optionTwoText: '',
     author: this.props.setUser,
-    id: generateUID()
   }
   handleChangeOne = (e) => {
-    const optionOne = e.target.value
+    const optionOneText = e.target.value
     this.setState(() => ({
-      optionOne: optionOne
+      optionOneText: optionOneText
     }))
   }
   handleChangeTwo = (e) => {
-    const optionTwo = e.target.value
+    const optionTwoText = e.target.value
     this.setState(() => ({
-      optionTwo: optionTwo
+      optionTwoText: optionTwoText
     }))
   }
   handleSubmit = (e) => {
@@ -27,8 +26,8 @@ class AddQuestion extends Component {
     this.props.dispatch(handleAddQuestion(this.state))
     this.props.history.push('/home')
     this.setState(() => ({
-      optionOne: '',
-      optionTwo: ''
+      optionOneText: '',
+      optionTwoText: ''
     }))
   }
   render() {
@@ -38,18 +37,18 @@ class AddQuestion extends Component {
         <form onSubmit={this.handleSubmit}>
           <textarea
             placeholder='Option One'
-            value={this.state.optionOne}
+            value={this.state.optionOneText}
             onChange={this.handleChangeOne}
           />
           <textarea
             placeholder='Option Two'
-            value={this.state.optionTwo}
+            value={this.state.optionTwoText}
             onChange={this.handleChangeTwo}
           />
 
           <button
             type='submit'
-            disabled={this.state.optionOne === '' || this.state.optionTwo === ''}>
+            disabled={this.state.optionOneText === '' || this.state.optionTwoText === ''}>
             Submit
           </button>
         </form>
