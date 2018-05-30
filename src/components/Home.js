@@ -54,6 +54,9 @@ class Home extends Component {
 }
 
 function mapStateToProps ({ questions, users, setUser }) {
+  console.log('@@@@@@@@@@@@', questions, users, setUser)
+  console.log(Object.keys(questions))
+  console.log(questions.timestamp)
   const allQuestions = Object.keys(questions)
     .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
   const answeredQuestionsIds = Object.keys(users[setUser].answers)
