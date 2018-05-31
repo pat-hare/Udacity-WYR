@@ -34,3 +34,8 @@ ul {
   background-color: skyblue;
   cursor: pointer;
 }
+
+.active {
+  font-weight: bold;
+  color: red;
+}
