@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 class Leaderboard extends Component {
   render() {
-    console.log(this.props)
     return(
       <ul>
         {this.props.users.map((user) => (

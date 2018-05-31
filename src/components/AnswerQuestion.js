@@ -11,27 +11,26 @@ class AnswerQuestion extends Component {
     classTwo: 'notActive',
   }
   render() {
-    const { questionID, setUser } = this.props
+    const { questionID, setUser, question, actions, author } = this.props
     const { optionOne, optionTwo } = this.props.questions[questionID]
+    const { classOne, classTwo, answered } = this.state
     const optionOneStr = 'optionOne'
     const optionTwoStr = 'optionTwo'
-    console.log(this.props)
-    console.log(this.state)
     return (
       <div>
         <div>
           <h2>{optionOne.text}</h2>
-          {this.state.answered || this.props.question.optionOne.votes.includes(setUser) || this.props.question.optionTwo.votes.includes(setUser)
+          {answered || question.optionOne.votes.includes(setUser) || question.optionTwo.votes.includes(setUser)
             ? <div>
-                <p className={this.state.classOne}>{this.props.question.optionOne.votes.length} votes</p>
-                <p className={this.state.classOne}>{getPercentage(this.props.question.optionOne.votes.length, (this.props.question.optionOne.votes.length + this.props.question.optionTwo.votes.length))}%</p>
+                <p className={classOne}>{question.optionOne.votes.length} votes</p>
+                <p className={classOne}>{getPercentage(question.optionOne.votes.length, (question.optionOne.votes.length + question.optionTwo.votes.length))}%</p>
               </div>
             : <p></p>}
         </div>
         <button
           className='loginButton'
-          onClick={() => this.props.actions.handleAnswerQuestion({authedUser: setUser, answer: optionOneStr, qid: questionID}) && this.setState({ answered: true, classOne: 'active' })}
-          disabled={this.state.answered || this.props.question.optionOne.votes.includes(setUser) || this.props.question.optionTwo.votes.includes(setUser)}>
+          onClick={() => actions.handleAnswerQuestion({authedUser: setUser, answer: optionOneStr, qid: questionID}) && this.setState({ answered: true, classOne: 'active' })}
+          disabled={answered || question.optionOne.votes.includes(setUser) || question.optionTwo.votes.includes(setUser)}>
           X
         </button>
 
@@ -41,17 +40,17 @@ class AnswerQuestion extends Component {
 
         <div>
           <h2>{optionTwo.text}</h2>
-          {this.state.answered || this.props.question.optionOne.votes.includes(setUser) || this.props.question.optionTwo.votes.includes(setUser)
+          {answered || question.optionOne.votes.includes(setUser) || question.optionTwo.votes.includes(setUser)
             ? <div>
-                <p className={this.state.classTwo}>{this.props.question.optionTwo.votes.length} votes</p>
-                <p className={this.state.classTwo}>{getPercentage(this.props.question.optionTwo.votes.length, (this.props.question.optionOne.votes.length + this.props.question.optionTwo.votes.length))}</p>
+                <p className={classTwo}>{question.optionTwo.votes.length} votes</p>
+                <p className={classTwo}>{getPercentage(question.optionTwo.votes.length, (question.optionOne.votes.length + question.optionTwo.votes.length))}</p>
               </div>
             : <p></p>}
         </div>
         <button
           className='loginButton'
-          onClick={() => this.props.actions.handleAnswerQuestion({authedUser: setUser, answer: optionTwoStr, qid: questionID}) && this.setState({ answered: true, classTwo: 'active' })}
-          disabled={this.state.answered || this.props.question.optionOne.votes.includes(setUser) || this.props.question.optionTwo.votes.includes(setUser)}>
+          onClick={() => actions.handleAnswerQuestion({authedUser: setUser, answer: optionTwoStr, qid: questionID}) && this.setState({ answered: true, classTwo: 'active' })}
+          disabled={answered || question.optionOne.votes.includes(setUser) || question.optionTwo.votes.includes(setUser)}>
           X
         </button>
 
@@ -60,7 +59,7 @@ class AnswerQuestion extends Component {
         </span>
 
         <div>
-          <img src={this.props.author.avatarURL} alt={`Avatar for ${this.props.author.name}`}/>
+          <img src={author.avatarURL} alt={`Avatar for ${author.name}`}/>
         </div>
 
       </div>

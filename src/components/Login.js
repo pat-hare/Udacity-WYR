@@ -5,13 +5,14 @@ import * as Actions from '../actions/setUser'
 
 class Login extends React.Component {
   render() {
+    const { users, actions, history } = this.props
     return (
       <div>
         <div>
           <h1>Login:</h1>
         </div>
         <ul>
-          {this.props.users.map((user) => (
+          {users.map((user) => (
             <li key={user.id}>
               <div className='loginBox'>
                 <div>
@@ -22,7 +23,7 @@ class Login extends React.Component {
                 </div>
                 <button
                   className='loginButton'
-                  onClick={() => this.props.actions.setUser(user.id) && this.props.history.push('/home')}>
+                  onClick={() => actions.setUser(user.id) && history.push('/home')}>
                   Login
                 </button>
               </div>

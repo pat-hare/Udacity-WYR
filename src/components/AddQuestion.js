@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
-import { generateUID } from '../utils/api'
 
 class AddQuestion extends Component {
   state = {
@@ -31,24 +30,25 @@ class AddQuestion extends Component {
     }))
   }
   render() {
+    const { optionOneText, optionTwoText } = this.state
     return (
       <div>
         <h2>Would You Rather</h2>
         <form onSubmit={this.handleSubmit}>
           <textarea
             placeholder='Option One'
-            value={this.state.optionOneText}
+            value={optionOneText}
             onChange={this.handleChangeOne}
           />
           <textarea
             placeholder='Option Two'
-            value={this.state.optionTwoText}
+            value={optionTwoText}
             onChange={this.handleChangeTwo}
           />
 
           <button
             type='submit'
-            disabled={this.state.optionOneText === '' || this.state.optionTwoText === ''}>
+            disabled={optionOneText === '' || optionTwoText === ''}>
             Submit
           </button>
         </form>

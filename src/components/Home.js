@@ -18,11 +18,11 @@ class Home extends Component {
   }
 
   render() {
-    const { unansweredQuestions, answeredQuestions } = this.props
+    const { unansweredQuestions, answeredQuestions, setUser } = this.props
     const { toggleUnanswered } = this.state
     return (
       <div>
-        <h3>Would You Rather - {this.props.setUser}</h3>
+        <h3>Would You Rather - {setUser}</h3>
         <span>
           <button
             onClick={this.toggleUnanswered}>
