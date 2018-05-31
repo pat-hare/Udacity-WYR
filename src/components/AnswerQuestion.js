@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as Actions from '../actions/questions'
 import { bindActionCreators } from 'redux'
+import { getPercentage } from '../utils/api'
 
 class AnswerQuestion extends Component {
   state = {
@@ -21,7 +22,10 @@ class AnswerQuestion extends Component {
         <div>
           <h2>{optionOne.text}</h2>
           {this.state.answered || this.props.question.optionOne.votes.includes(setUser) || this.props.question.optionTwo.votes.includes(setUser)
-            ? <p className={this.state.classOne}>{this.props.question.optionOne.votes.length} votes</p>
+            ? <div>
+                <p className={this.state.classOne}>{this.props.question.optionOne.votes.length} votes</p>
+                <p className={this.state.classOne}>{getPercentage(this.props.question.optionOne.votes.length, (this.props.question.optionOne.votes.length + this.props.question.optionTwo.votes.length))}%</p>
+              </div>
             : <p></p>}
         </div>
         <button
@@ -38,7 +42,10 @@ class AnswerQuestion extends Component {
         <div>
           <h2>{optionTwo.text}</h2>
           {this.state.answered || this.props.question.optionOne.votes.includes(setUser) || this.props.question.optionTwo.votes.includes(setUser)
-            ? <p className={this.state.classTwo}>{this.props.question.optionTwo.votes.length} votes</p>
+            ? <div>
+                <p className={this.state.classTwo}>{this.props.question.optionTwo.votes.length} votes</p>
+                <p className={this.state.classTwo}>{getPercentage(this.props.question.optionTwo.votes.length, (this.props.question.optionOne.votes.length + this.props.question.optionTwo.votes.length))}</p>
+              </div>
             : <p></p>}
         </div>
         <button
