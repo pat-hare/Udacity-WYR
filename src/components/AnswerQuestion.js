@@ -9,6 +9,7 @@ class AnswerQuestion extends Component {
     const { optionOne, optionTwo } = this.props.questions[questionID]
     const optionOneStr = 'optionOne'
     const optionTwoStr = 'optionTwo'
+    console.log(this.props)
     return (
       <div>
         <div>
@@ -30,6 +31,12 @@ class AnswerQuestion extends Component {
           onClick={() => this.props.actions.handleAnswerQuestion({authedUser: setUser, answer: optionTwoStr, qid: questionID}) && this.props.history.push('/home')}>
           X
         </button>
+        <span>
+          <h3>BY</h3>
+        </span>
+        <div>
+          <img src={this.props.author.avatarURL} alt={`Avatar for ${this.props.author.name}`}/>
+        </div>
       </div>
     )
   }
@@ -38,12 +45,16 @@ class AnswerQuestion extends Component {
 function mapStateToProps ({ questions, users, setUser }) {
   const URLPath = window.location.pathname.split('/')
   const questionID = URLPath[2]
-
+  const authorQ = questions[questionID]
+  const author = users[authorQ.author]
+  console.log(author)
   return {
     questionID: questionID,
     questions: questions,
+    author: author,
     users,
-    setUser
+    setUser,
+
   }
 }
 

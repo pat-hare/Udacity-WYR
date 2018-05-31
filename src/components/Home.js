@@ -44,6 +44,7 @@ class Home extends Component {
             : answeredQuestions.map((id) => (
                 <li key={id}>
                   <Question id={id} />
+                  {console.log(id)}
                 </li>))
             }
         </ul>
