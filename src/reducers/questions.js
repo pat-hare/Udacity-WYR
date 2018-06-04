@@ -1,5 +1,4 @@
 import { RECEIVE_QUESTIONS, SAVE_ANSWER, ADD_QUESTION } from '../actions/questions'
-import generateUID from '../utils/api'
 
 export default function questions (state = {}, action) {
   switch(action.type) {

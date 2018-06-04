@@ -19,6 +19,9 @@ class AnswerQuestion extends Component {
     return (
       <div>
         <div>
+          <h1>Would You Rather?</h1>
+        </div>
+        <div>
           <h2>{optionOne.text}</h2>
           {answered || question.optionOne.votes.includes(setUser) || question.optionTwo.votes.includes(setUser)
             ? <div>

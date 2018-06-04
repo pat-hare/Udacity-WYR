@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions'
 import Login from './Login'
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './Home'
 import AnswerQuestion from './AnswerQuestion'
 import AddQuestion from './AddQuestion'
 import Leaderboard from './Leaderboard'
 import Nav from './Nav'
-import four0four from './404'
 
 class App extends Component {
   componentDidMount() {
@@ -24,16 +23,15 @@ class App extends Component {
           {this.props.loading === true
             ? <Switch>
                 <Route path='/' exact component={Login} />
-                <Redirect from='*' to='/' />
-                <Route path='404' component={four0four} />
+                <Route render={function () {
+                  return <p>Not Found! <a href='/'>Click here to try again</a></p>
+                }} />
               </Switch>
             : <Switch>
                 <Route path='/home' component={Home} />
                 <Route path='/questions/:id' component={AnswerQuestion} />
                 <Route path='/add' component={AddQuestion} />
                 <Route path='/leaderboard' component={Leaderboard} />
-                <Redirect from='*' to='/404' />
-                <Route path='404' component={four0four} />
               </Switch>}
         </div>
       </Router>
