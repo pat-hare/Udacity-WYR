@@ -126,6 +126,7 @@ export function _getUsers () {
 }
 
 export function _getQuestions () {
+  console.log('_DATA - Qs', questions)
   return new Promise((res, rej) => {
     setTimeout(() => res({...questions}), 1000)
   })
@@ -133,7 +134,6 @@ export function _getQuestions () {
 
 function formatQuestion ({ optionOneText, optionTwoText, author }) {
   return {
-    id: generateUID(),
     timestamp: Date.now(),
     author,
     optionOne: {
@@ -151,27 +151,30 @@ export function _saveQuestion (question) {
   return new Promise((res, rej) => {
     const authedUser = question.author;
     const formattedQuestion = formatQuestion(question);
+    console.log(question)
 
     setTimeout(() => {
       questions = {
         ...questions,
-        [formattedQuestion.id]: formattedQuestion
+        [question.id]: formattedQuestion
       }
 
       users = {
         ...users,
         [authedUser]: {
           ...users[authedUser],
-          questions: users[authedUser].questions.concat([formattedQuestion.id])
+          questions: users[authedUser].questions.concat([question.id])
         }
       }
 
       res(formattedQuestion)
     }, 1000)
+    console.log('_DATA - saveQ', formattedQuestion.id)
   })
 }
 
 export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
+  console.log('_DATA - saveQA', authedUser, qid, answer)
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {
