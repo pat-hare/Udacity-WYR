@@ -20,8 +20,6 @@ class Home extends Component {
   render() {
     const { unansweredQuestions, answeredQuestions, setUser } = this.props
     const { toggleUnanswered } = this.state
-    console.log('Home state + props', this.state, this.props)
-    console.log('Unanswered Qs', unansweredQuestions)
     return (
       <div>
         <h3>Would You Rather - {setUser}</h3>
@@ -46,7 +44,6 @@ class Home extends Component {
             : answeredQuestions.map((id) => (
                 <li key={id}>
                   <Question id={id} />
-                  {console.log(id)}
                 </li>))
             }
         </ul>

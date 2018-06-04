@@ -72,7 +72,6 @@ function mapStateToProps ({ questions, users, setUser }) {
   const questionID = URLPath[2]
   const questionState = questions[questionID]
   const author = users[questionState.author]
-  console.log(author)
   return {
     questionID: questionID,
     questions: questions,

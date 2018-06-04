@@ -25,7 +25,6 @@ class AddQuestion extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.dispatch(handleAddQuestion(this.state))
-    console.log('AddQuestion Submit', this.state)
     this.props.history.push('/home')
     this.setState(() => ({
       optionOneText: '',
